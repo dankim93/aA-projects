@@ -44,11 +44,11 @@ class Array
     self.each_with_index do |el, idx|
       answer << el
     end
+
     answer
   end
-
-
 end
+
 
 def fibonacci(n)
   if n == 1
@@ -58,28 +58,6 @@ def fibonacci(n)
   end
   last_two = fibonacci(n - 1)
   last_two << (last_two.last + last_two[-2])
-end
-
-class Array
-  def my_permutation
-    #BASE
-    return [self] if self.length == 1
-
-    #i.nduction
-    answer = []
-    self.each do |el|
-      # debugger
-      result = []
-      temp = self.dup
-      temp.delete(el)
-
-      # result += temp.my_permutation.unshift(el)
-      # answer << result
-      answer << temp.my_permutation.unshift(el)
-    end
-
-    answer
-  end
 end
 
 def my_permutation(arr)
@@ -95,13 +73,13 @@ def my_permutation(arr)
   end
   result
 end
+# p my_permutation([1,2,3])
 
 def bsearch(arr, target)
   return nil if arr.length == 1 && arr.first != target
 
-
   middle_val = arr[arr.length / 2]
-  middle_idx = arr.length/2
+  middle_idx = arr.length / 2
   if middle_val > target
     check = arr[0...middle_idx]
     return bsearch(check, target)
@@ -112,11 +90,9 @@ def bsearch(arr, target)
   else
     return middle_idx
   end
-
 end
 
 def merge_helper(arr1, arr2)
-  p "1: #{arr1} | 2: #{arr2}"
   arr1.concat(arr2).sort
 end
 
@@ -133,7 +109,7 @@ def subsets(arr)
   result = subsets(arr[0...-1])
   result + result.map { |subset| subset + [arr.last] }
 end
-p subsets([1, 3, 4])
+# p subsets([1, 3, 4])
 
 def make_changes(amount, coins=[25, 10, 5, 1])
   return [] if amount <= 0
@@ -153,6 +129,7 @@ def better_changes(amount, coins=[25,10,5,1])
       best_change = current_change
     end
   end
+  
   best_change || []
 end
 # p better_changes(14, [10, 7, 1])

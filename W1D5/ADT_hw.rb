@@ -72,9 +72,9 @@ class Map
   end
 end
 map = Map.new
-p map.assign(1,2)
-p map.assign(3,4)
-p map.lookup(1)
-p map.lookup(2)
-p map.remove(3)
-p map.show
+# p map.assign(1,2)
+# p map.assign(3,4)
+# p map.lookup(1)
+# p map.lookup(2)
+# p map.remove(3)
+# p map.show

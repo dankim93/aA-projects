@@ -129,7 +129,7 @@ def better_changes(amount, coins=[25,10,5,1])
       best_change = current_change
     end
   end
-  
+
   best_change || []
 end
 # p better_changes(14, [10, 7, 1])

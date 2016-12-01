@@ -1,0 +1,7 @@
+require_relative 'lib/model_base.rb'
+require_relative 'lib/question_database.rb'
+require_relative 'lib/question_follow.rb'
+require_relative 'lib/question_like.rb'
+require_relative 'lib/question.rb'
+require_relative 'lib/reply.rb'
+require_relative 'lib/user.rb'

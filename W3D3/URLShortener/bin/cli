@@ -1,0 +1,30 @@
+require_relative '../app/models/shortened_url.rb'
+require_relative '../app/models/visit.rb'
+
+puts "Input your email: "
+email = gets.chomp
+user = User.create(email: email)
+
+puts "What do you want to do?"
+puts "0. Create shortened URL"
+puts "1. Visit shortened URL"
+option = gets.chomp
+
+if option == '0'
+  puts "Type in your long url"
+  long_url = gets.chomp
+  short_url = ShortenedUrl.random_code
+  ShortenedUrl.create(long_url: long_url, short_url: short_url, user_id: user.id)
+  puts "Short url is : #{short_url}"
+  puts "Goodbye!"
+elsif option == '1'
+  puts "Type in the shortened URL"
+  short_url = gets.chomp
+  shortened_url_object = ShortenedUrl.select { |url| url.short_url == short_url }.first
+  long_url = shortened_url_object.long_url
+  puts "Launching #{long_url}..."
+  Visit.record_visit!(user, shortened_url_object)
+  Launchy.open(long_url)
+else
+  puts "That is not a valid option."
+end

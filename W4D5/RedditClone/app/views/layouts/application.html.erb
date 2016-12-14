@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RedditClone</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render "shared/errors" %>
+
+<ul>
+
+
+<li><%= link_to "Create a sub!", new_sub_url, method: :get %></li><br>
+<li><%= link_to "All subs", subs_url, method: :get %></li><br>
+<% if current_user %>
+  <li><%= button_to "Log Out", session_url(current_user), method: :delete %></li>
+<% end %>
+</ul>
+
+<%= yield %>
+
+
+
+</body>
+</html>

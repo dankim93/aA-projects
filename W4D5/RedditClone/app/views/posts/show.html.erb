@@ -1,0 +1,21 @@
+<h1> <%= link_to "#{@post.title}", post_url(@post), method: :get %> by <%= @post.author.username %></h1>
+<h4>Content:</h4>
+
+<%= @post.content %> <br>
+
+<% @post.subs.each do |sub| %>
+  <%= button_to "#{sub.title}", sub_url(sub), method: :get %><br>
+<% end %>
+
+<% if @post.author_id == current_user.id %>
+  <%= button_to "Edit Post", edit_post_url(@post), method: :get %>
+<% end %>
+<br><br>
+<h4>Comments</h4>
+<%= link_to "Comment on this post!", new_post_comment_url(@post), method: :get %>
+<ul>
+  <% @post.comments.each do |comment| %>
+  <li><%= link_to "#{comment.content}", post_url(@post), method: :get %></li>
+  <% end %>
+
+</ul>

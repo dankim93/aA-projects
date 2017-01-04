@@ -1,0 +1,1 @@
+json.(@gift, :title, :description)
